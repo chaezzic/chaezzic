@@ -1,4 +1,4 @@
-package chaezzic.chaezzicspring.config;
+package chaezzic.chaezzicspring.oauth2.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,10 +13,13 @@ import static org.springframework.security.config.Customizer.withDefaults;
 public class SecurityConfig {
     @Bean
     protected SecurityFilterChain config(HttpSecurity http) throws Exception {
-        http
+        http    .csrf().disable()
+
                 // 권한 설정
                 .authorizeRequests()
                 .antMatchers("/").permitAll() // 로그인 하지 않았을 때 접근할 수 있는 url
+                .antMatchers("/users/new").permitAll()
+                .antMatchers("/error").permitAll()
                 .anyRequest().authenticated() // 나머지는 모두 로그인을 해야 접근 가능
 
                 .and()

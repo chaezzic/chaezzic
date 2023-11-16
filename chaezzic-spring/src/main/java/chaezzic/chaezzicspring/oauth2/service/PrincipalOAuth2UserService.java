@@ -1,4 +1,4 @@
-package chaezzic.chaezzicspring.oauth2;
+package chaezzic.chaezzicspring.oauth2.service;
 
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
         import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
