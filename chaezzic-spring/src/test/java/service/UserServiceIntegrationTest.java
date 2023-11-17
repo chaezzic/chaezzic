@@ -1,12 +1,10 @@
 package service;
 
 import chaezzic.chaezzicspring.ChaezzicSpringApplication;
+//import chaezzic.chaezzicspring.domain.Role;
 import chaezzic.chaezzicspring.domain.User;
-import chaezzic.chaezzicspring.repository.MemoryUserRepository;
 import chaezzic.chaezzicspring.repository.UserRepository;
 import chaezzic.chaezzicspring.service.UserService;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -53,6 +51,20 @@ public class UserServiceIntegrationTest {
                 () -> userService.join(user2));
 
         assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다");
+
+    }
+
+    @Test
+    public void 역할_확인하기() throws Exception {
+        //given
+        User user = new User();
+        user.setName("김세은");
+
+        //when
+
+
+        //then
+
 
     }
 }

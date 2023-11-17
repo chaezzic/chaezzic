@@ -1,16 +1,11 @@
 package chaezzic.chaezzicspring.config;
 
-import chaezzic.chaezzicspring.repository.JpaUserRepository;
 //import chaezzic.chaezzicspring.repository.MemoryUserRepository;
 import chaezzic.chaezzicspring.repository.UserRepository;
 import chaezzic.chaezzicspring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.persistence.EntityManager;
-import javax.sql.DataSource;
-import javax.xml.crypto.Data;
 
 @Configuration
 public class SpringConfig {

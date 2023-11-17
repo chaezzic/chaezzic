@@ -29,14 +29,16 @@ public class UserController {
     public String create(UserForm form) {
         User user = new User();
         user.setName(form.getName());
+        user.setEmail(form.getEmail());
 
         userService.join(user);
 
         System.out.println(user.getName());
+        System.out.println(user.getEmail());
         return "redirect:/";
     }
 
-    @GetMapping("/users")
+    @GetMapping("/users/List")
     public String list(Model model) {
         List<User> users = userService.findMembers();
         model.addAttribute("users", users);
