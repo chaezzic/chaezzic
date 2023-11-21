@@ -1,28 +1,38 @@
 package chaezzic.chaezzicspring.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table(name="users")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class User implements Serializable {
 
     @Id
+    //taba
+    //@GeneratedValue(strategy = GenerationType.AUTO)
+
+    //h2
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, length = 255)
     private String name;
 
     @Column(name = "email", nullable = false)
     private String email;
 
-//    @Enumerated(EnumType.STRING)
-//    @Column(name="role", nullable = false)
-//    private Role role;
+    @Enumerated(EnumType.STRING)
+    @Column(name="role", nullable = false)
+    private Role role;
 
     public Long getId() {
         return id;
@@ -48,15 +58,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
-//    public String getRole() {
-//        return this.role.getRoleName();
-//    }
-//
-//    public void setRole(Role role) {
-//        this.role = role;
-//    }
-//
-//    public User update(String name, Role role){
-//        return this;
-//    }
+    public Role getRole() {
+        return this.role;
+    }
+
+    public void setRole(Role role) {
+        this.role = Role.USER;
+    }
 }
