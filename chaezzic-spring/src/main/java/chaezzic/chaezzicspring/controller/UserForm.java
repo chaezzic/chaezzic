@@ -1,5 +1,7 @@
 package chaezzic.chaezzicspring.controller;
 
+import chaezzic.chaezzicspring.domain.Role;
+
 public class UserForm {
     private String name;
     private String email;
@@ -19,4 +21,5 @@ public class UserForm {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }

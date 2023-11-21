@@ -1,7 +1,5 @@
 package chaezzic.chaezzicspring.domain;
 
-import lombok.Builder;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -20,9 +18,9 @@ public class User implements Serializable {
     @Column(name = "email", nullable = false)
     private String email;
 
-//    @Enumerated(EnumType.STRING)
-//    @Column(name="role", nullable = false)
-//    private Role role;
+    @Enumerated(EnumType.STRING)
+    @Column(name="role", nullable = false)
+    private Role role;
 
     public Long getId() {
         return id;
@@ -48,15 +46,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
-//    public String getRole() {
-//        return this.role.getRoleName();
-//    }
-//
-//    public void setRole(Role role) {
-//        this.role = role;
-//    }
-//
-//    public User update(String name, Role role){
-//        return this;
-//    }
+    public Role getRole() {
+        return this.role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }

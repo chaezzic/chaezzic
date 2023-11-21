@@ -1,5 +1,6 @@
 package chaezzic.chaezzicspring.controller;
 
+import chaezzic.chaezzicspring.domain.Role;
 import chaezzic.chaezzicspring.domain.User;
 import chaezzic.chaezzicspring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class UserController {
         User user = new User();
         user.setName(form.getName());
         user.setEmail(form.getEmail());
+        user.setRole(Role.USER);
 
         userService.join(user);
 
