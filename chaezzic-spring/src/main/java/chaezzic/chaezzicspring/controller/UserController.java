@@ -1,6 +1,5 @@
 package chaezzic.chaezzicspring.controller;
 
-import chaezzic.chaezzicspring.domain.Role;
 import chaezzic.chaezzicspring.domain.User;
 import chaezzic.chaezzicspring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,26 +18,6 @@ public class UserController {
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
-    }
-
-    @GetMapping("/users/new")
-    public String createForm() {
-        return "users/createUserForm";
-    }
-
-    @PostMapping("/users/new")
-    public String create(UserForm form) {
-        User user = new User();
-        user.setName(form.getName());
-        user.setEmail(form.getEmail());
-        user.setRole(Role.USER);
-
-        userService.join(user);
-
-        System.out.println(user.getName());
-        System.out.println(user.getEmail());
-        System.out.println(user.getRole());
-        return "redirect:/";
     }
 
     @GetMapping("/users/List")
