@@ -19,20 +19,15 @@ public class User implements Serializable {
     //@GeneratedValue(strategy = GenerationType.AUTO)
 
     //h2
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(name = "name", nullable = false, length = 255)
     private String name;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = true)
     private String email;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name="role", nullable = false)
-    private Role role;
 
     public Long getId() {
         return id;
@@ -58,11 +53,4 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public Role getRole() {
-        return this.role;
-    }
-
-    public void setRole(Role role) {
-        this.role = Role.USER;
-    }
 }
