@@ -26,7 +26,7 @@ public class SecurityConfig {
                     .antMatchers("/").permitAll() // 로그인 하지 않았을 때 접근할 수 있는 url
                     .antMatchers("/users/new").permitAll()
                     .antMatchers("/users/List").authenticated()
-                    .antMatchers("/jobs/list").authenticated()
+                    .antMatchers("/jobs/List").authenticated()
                     .antMatchers("/error").permitAll()
                     .anyRequest().authenticated() // 나머지는 모두 로그인을 해야 접근 가능
 
