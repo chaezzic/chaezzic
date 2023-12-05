@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface JobRepository {
 
     List<Job> findAll();
+    Optional<Job> findByJobTitle(String jobTitle);
 }
