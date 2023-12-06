@@ -1,12 +1,14 @@
 package chaezzic.chaezzicspring.repository;
 
 import chaezzic.chaezzicspring.domain.Job;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface JobRepository {
+public interface JobRepository extends JpaRepository<Job, Long>, JobRepositoryCustom {
 
     List<Job> findAll();
-    Optional<Job> findByJobTitle(String jobTitle);
+
+    Job save(Job job);
 }

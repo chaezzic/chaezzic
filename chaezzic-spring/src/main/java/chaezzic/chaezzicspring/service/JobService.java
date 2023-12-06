@@ -2,11 +2,9 @@ package chaezzic.chaezzicspring.service;
 
 import chaezzic.chaezzicspring.domain.Job;
 import chaezzic.chaezzicspring.repository.JobRepository;
-import chaezzic.chaezzicspring.repository.SpringDataJpaJobRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Transactional
 public class JobService {
@@ -25,5 +23,11 @@ public class JobService {
 //    public Optional<Job> findJobs(String jobTitle) {
 //        return springDataJpaJobRepository.findByJobTitle(jobTitle);
 //    }
+
+    public Long join(Job job){
+        jobRepository.save(job);
+
+        return job.getId();
+    }
 
 }

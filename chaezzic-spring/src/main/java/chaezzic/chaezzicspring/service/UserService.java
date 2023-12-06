@@ -36,8 +36,14 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    // getTestUser와 같은 기능
     public Optional<User> findOne(Long id) {
         return userRepository.findById(id);
+    }
+
+    //query로 findOne 기능 재구현한 함수
+    public Optional<User> getUser(Long id){
+        return userRepository.findByUserId(id);
     }
 
 }
