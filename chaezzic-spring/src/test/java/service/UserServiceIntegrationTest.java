@@ -109,6 +109,8 @@ public class UserServiceIntegrationTest {
         job1.setJobTitle("Engineer");
         job1.setTitle("spring1");
         job1.setId(12345678L);
+        job1.setPart("asdf");
+        job1.setYear("2023");
         skill1.setName("Java");
         skill1.setId(12L);
         jobSkills1.setJobId(job1.getId());
@@ -124,6 +126,8 @@ public class UserServiceIntegrationTest {
         job2.setJobTitle("Engineer");
         job2.setId(23456789L);
         job2.setTitle("spring2");
+        job2.setPart("asdf");
+        job2.setYear("2023");
         skill2.setName("Python");
         skill2.setId(23L);
         jobSkills2.setJobId(job2.getId());
@@ -139,6 +143,8 @@ public class UserServiceIntegrationTest {
         job3.setJobTitle("Designer");
         job3.setId(34567890L);
         job3.setTitle("spring");
+        job3.setPart("asdf");
+        job3.setYear("2023");
         skill3.setName("UI/UX");
         skill3.setId(34L);
         jobSkills3.setJobId(job3.getId());
@@ -149,7 +155,7 @@ public class UserServiceIntegrationTest {
         jobSkillsRepository.save(jobSkills3);
 
         //when
-        List<JobDTO> jobList = jobRepository.findTop5Skills("Engineer");
+        List<JobDTO> jobList = jobRepository.findTop5Skills("Engineer", "asdf", "2023");
 
         //then
         assertEquals(2, jobList.size());

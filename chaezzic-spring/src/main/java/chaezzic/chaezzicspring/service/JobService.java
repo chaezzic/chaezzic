@@ -1,6 +1,7 @@
 package chaezzic.chaezzicspring.service;
 
 import chaezzic.chaezzicspring.domain.Job;
+import chaezzic.chaezzicspring.domain.JobDTO;
 import chaezzic.chaezzicspring.repository.JobRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,6 +29,10 @@ public class JobService {
         jobRepository.save(job);
 
         return job.getId();
+    }
+
+    public List<JobDTO> getTop5Stacks(String jobTitle, String part, String year){
+        return jobRepository.findTop5Skills(jobTitle, part, year);
     }
 
 }

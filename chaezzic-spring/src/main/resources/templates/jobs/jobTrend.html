@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div class="container">
+    <div>
+        <h2>기술 스택 트렌드</h2>
+        <tr th:each="top5list : ${top5JobList}">
+            <td th:text="${top5list.skillName}">Python</td>
+            <td th:text="${top5list.skillCount}">100</td>
+        </tr>
+    </div>
+</div>
+
+</body>
+</html>

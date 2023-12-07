@@ -15,7 +15,7 @@ public class JobRepositoryCustomImpl implements JobRepositoryCustom{
     }
 
     @Override
-    public List<JobDTO> findTop5Skills(String jobTitle){
+    public List<JobDTO> findTop5Skills(String jobTitle, String part, String year){
         QJob job = QJob.job;
         QJobSkills jobSkills = QJobSkills.jobSkills;
         QSkill skill = QSkill.skill;
@@ -24,7 +24,9 @@ public class JobRepositoryCustomImpl implements JobRepositoryCustom{
                 .from(job)
                 .join(jobSkills).on(job.id.eq(jobSkills.jobId))
                 .join(skill).on(jobSkills.skillId.eq(skill.id))
-                .where(job.jobTitle.eq(jobTitle))
+                .where(job.jobTitle.eq(jobTitle),
+                        job.year.eq(year),
+                        job.part.eq(part))
                 .groupBy(job.jobTitle, skill.name)
                 .orderBy(jobSkills.count().desc())
                 .limit(5)
