@@ -9,9 +9,12 @@
     <div>
         <h2>기술 스택 트렌드</h2>
         <tr th:each="top5list : ${top5JobList}">
-            <td th:text="${top5list.skillName}">Python</td>
-            <td th:text="${top5list.skillCount}">100</td>
+            <td th:text="${top5list.skillName}"></td>
+            <td th:text="${top5list.skillCount}"></td>
         </tr>
+        <h3>총 데이터 개수</h3>
+        <span th:text="${totalCount}"></span>
+
     </div>
 </div>
 

@@ -6,6 +6,7 @@ import chaezzic.chaezzicspring.domain.selection.JobList;
 import chaezzic.chaezzicspring.domain.selection.Part;
 import chaezzic.chaezzicspring.domain.selection.SelectDTO;
 import chaezzic.chaezzicspring.domain.selection.Year;
+import chaezzic.chaezzicspring.repository.JobRepository;
 import chaezzic.chaezzicspring.service.JobService;
 import chaezzic.chaezzicspring.service.JobSkillsService;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,7 @@ public class JobController {
 
     private final JobService jobService;
     private final JobSkillsService jobSkillsService;
+    private final JobRepository jobRepository;
 
     @ModelAttribute("yearCodes")
     public List<Year> yearCodes(){
@@ -114,12 +116,15 @@ public class JobController {
     public String trend(@PathVariable String year, @PathVariable String part, @PathVariable String job, Model model){
 
 
-        List<JobDTO> jobDTOList = jobService.getTop5Stacks(job, part, year);
-        log.info(String.valueOf(jobDTOList.size()));
-//        log.info("job title: " + jobDTOList.get(0).getJobTitle());
-//        log.info("skill name: " + jobDTOList.get(0).getSkillName());
-//        log.info("skill count: " + jobDTOList.get(0).getSkillCount());
+        List<JobDTO> jobDTOList = jobRepository.findTop5Skills(job, part, year);
+        Long total = jobRepository.totalCount(job, part, year);
+
+        log.info("Job title: " + jobDTOList.get(0).getJobTitle());
+        log.info("Skill name: " + jobDTOList.get(0).getSkillName());
+        log.info("Total count: " + total);
+
         model.addAttribute("top5JobList", jobDTOList);
+        model.addAttribute("totalCount", total);
         return "jobs/jobTrend";
     }
 }
