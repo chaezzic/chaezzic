@@ -23,7 +23,7 @@ public class JobSkillsService {
     Part secondHalf = new Part("하반기", "하반기");
 
 
-    JobList cLang = new JobList("C/Cpp 개발", "C/Cpp 개발");
+    JobList cLang = new JobList("C, Cpp 개발", "C/Cpp 개발");
     JobList dba = new JobList("DBA(Database Admin.)", "DBA(Database Admin.)");
     JobList devOps = new JobList("DevOps 개발", "DevOps 개발");
     JobList nodeJs = new JobList("Node.js 개발", "Node.js 개발");
@@ -31,7 +31,7 @@ public class JobSkillsService {
     JobList qa = new JobList("QA(Quality Assurance)", "QA(Quality Assurance)");
     JobList ios = new JobList("iOS 개발", "iOS 개발");
     JobList game = new JobList("게임개발", "게임개발");
-    JobList etc = new JobList("네트워크/클라우드/보안/운영", "네트워크/클라우드/보안/운영");
+    JobList etc = new JobList("네트워크, 클라우드, 보안, 운영", "네트워크/클라우드/보안/운영");
     JobList dataAns = new JobList("데이터 분석가", "데이터 분석가");
     JobList dataEng = new JobList("데이터 엔지니어", "데이터 엔지니어");
     JobList mlDev = new JobList("머신러닝 개발", "머신러닝 개발");

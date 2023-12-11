@@ -83,7 +83,7 @@ public class JobController {
         return jobCodes;
     }
 
-    @GetMapping("/List")
+    @GetMapping("/list")
     public String list(Model model) {
 //        Optional<Job> jobs = jobService.findJobs("안드로이드 개발");
         List<Job> jobs = jobService.findAllJobs();
@@ -92,13 +92,13 @@ public class JobController {
         return "jobs/jobList";
     }
 
-    @GetMapping("/Select")
+    @GetMapping("/select")
     public String selectForm(Model model){
         model.addAttribute("select", new SelectDTO());
         return "jobs/jobSelect";
     }
 
-    @PostMapping("/Select")
+    @PostMapping("/select")
     public String selectJob(@ModelAttribute SelectDTO selectDTO, RedirectAttributes redirectAttributes){
 
         log.info("selectDTO.year={}", selectDTO.getYear());
@@ -109,12 +109,17 @@ public class JobController {
         redirectAttributes.addAttribute("part", selectDTO.getPart());
         redirectAttributes.addAttribute("job", selectDTO.getJob());
 
-        return "redirect:/jobs/Trend/{year}/{part}/{job}";
+        return "redirect:/jobs/showJobTrends/{year}/{part}/{job}";
     }
 
-    @GetMapping("/Trend/{year}/{part}/{job}")
+    @GetMapping("/showJobTrends/{year}/{part}/{job}")
     public String trend(@PathVariable String year, @PathVariable String part, @PathVariable String job, Model model){
 
+        if (job.equals("C, Cpp 개발")){
+            job = "C/Cpp 개발";
+        } else if (job.equals("네트워크, 클라우드, 보안, 운영")) {
+            job = "네트워크/클라우드/보안/운영";
+        }
 
         List<JobDTO> jobDTOList = jobRepository.findTop5Skills(job, part, year);
         Long total = jobRepository.totalCount(job, part, year);
