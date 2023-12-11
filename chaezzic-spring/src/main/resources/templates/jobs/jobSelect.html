@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
 </head>
 <body>
+    <div class="container">
+        <h2>직무별 채용 트렌드</h2>
+        <form action="jobTrend.html" th:action th:object="${select}" method="post">
+            <div>
+                <div>년도</div>
+                <select  th:field="*{year}" class="form-select-year">
+                    <option th:each="year : ${yearCodes}" th:value="${year.code}"
+                            th:text="${year.displayName}">2023</option>
+                </select>
+                <div>분기</div>
+                <select  th:field="*{part}" class="form-select-part">
+                    <option th:each="part : ${partCodes}" th:value="${part.code}"
+                            th:text="${part.displayName}">first</option>
+                </select>
+                <div>직무</div>
+                <select  th:field="*{job}" class="form-select-job">
+                    <option th:each="job : ${jobCodes}" th:value="${job.code}"
+                            th:text="${job.displayName}">C/C++</option>
+                </select>
+            </div>
 
+            <hr>
+
+            <div class="col">
+                <button class="w-100 btn btn-primary btn-lg" type="submit">상품 등록</button>
+            </div>
+
+        </form>
+    </div>
 </body>
 </html>
