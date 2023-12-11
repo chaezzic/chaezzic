@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface JobRepositoryCustom {
     List<JobDTO> findTop5Skills(String jobTitle, String part, String year);
+    Long totalCount(String jobTitle, String part, String year);
 }

@@ -31,8 +31,4 @@ public class JobService {
         return job.getId();
     }
 
-    public List<JobDTO> getTop5Stacks(String jobTitle, String part, String year){
-        return jobRepository.findTop5Skills(jobTitle, part, year);
-    }
-
 }
