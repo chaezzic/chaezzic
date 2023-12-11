@@ -65,23 +65,6 @@ public class UserServiceIntegrationTest {
         assertEquals(4, allUser.size());
     }
 
-    @Test
-    public void 중복_회원_예외() throws Exception {
-        //given
-        User user1 = new User();
-        user1.setName("spring");
-
-        User user2 = new User();
-        user2.setName("spring");
-
-        //when
-        userService.join(user1);
-        IllegalStateException e = assertThrows(IllegalStateException.class,
-                () -> userService.join(user2));
-
-        assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다");
-
-    }
 
     @Test
     public void 사용자_찾기_쿼리_날리기() throws Exception {

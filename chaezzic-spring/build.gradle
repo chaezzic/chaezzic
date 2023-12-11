@@ -25,8 +25,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'com.querydsl:querydsl-jpa:5.0.0'
 	implementation 'com.querydsl:querydsl-apt:5.0.0'
-	implementation files('/Users/serma/Documents/TABA4_Project/chaezzic-spring/src/chaezzic/libs/tibero6-jdbc.jar')
+	implementation files('src/chaezzic/libs/tibero6-jdbc.jar')
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	compile('org.projectlombok:lombok')
+	annotationProcessor('org.projectlombok:lombok')
 	testImplementation ('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
