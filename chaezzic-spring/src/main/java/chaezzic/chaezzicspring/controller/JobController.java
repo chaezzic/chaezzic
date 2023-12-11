@@ -28,4 +28,10 @@ public class JobController {
 
         return "jobs/jobList";
     }
+
+    @GetMapping("/jobs/Trend")
+    public String trend(Model model){
+
+        return "jobs/jobTrend";
+    }
 }

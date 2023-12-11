@@ -1,16 +1,13 @@
 package chaezzic.chaezzicspring.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.NoArgsConstructor;
-import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 @Table(name = "`JOB`")
@@ -33,7 +30,7 @@ public class Job implements Serializable {
     private String title;
 
     @Column(name = "year")
-    private long year;
+    private String year;
 
     @Column(name = "apply_date")
     private String date;
@@ -51,7 +48,7 @@ public class Job implements Serializable {
         return company;
     }
 
-    public void setCompany() {
+    public void setCompany(String company) {
         this.company = company;
     }
 
@@ -71,11 +68,11 @@ public class Job implements Serializable {
         this.title = title;
     }
 
-    public long getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(long year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
