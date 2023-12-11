@@ -24,17 +24,17 @@ public class SecurityConfig {
                 // 권한 설정
                 .authorizeRequests()
                     .antMatchers("/").permitAll() // 로그인 하지 않았을 때 접근할 수 있는 url
-                    .antMatchers("/users/new").permitAll()
-                    .antMatchers("/users/List").authenticated()
-                    .antMatchers("/jobs/List").authenticated()
-                    .antMatchers("/error").permitAll()
-                    .anyRequest().authenticated() // 나머지는 모두 로그인을 해야 접근 가능
+//                    .antMatchers("/users/new").permitAll()
+//                    .antMatchers("/users/list").authenticated()
+//                    .antMatchers("/jobs/list").permitAll()
+//                    .antMatchers("/error").permitAll()
+                    .anyRequest().permitAll() // 나머지는 모두 로그인을 해야 접근 가능
 
                 .and()
 
                 .logout()
                     .clearAuthentication(true)
-                    .logoutSuccessUrl("/")
+                    .logoutSuccessUrl("http://localhost:3000/")
 
                 .and()
 
@@ -46,7 +46,7 @@ public class SecurityConfig {
                 .and()
 
                     .userInfoEndpoint()
-                    .userService(principalOAuth2UserService) //customOAuth2UserService 미구현
+                    .userService(principalOAuth2UserService)
         ;
         return http.build();
     }

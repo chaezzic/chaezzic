@@ -4,11 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.io.Serializable;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -16,9 +12,12 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 //@Builder
-public class Job implements Serializable {
+public class Job{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "job_id")
     @Column(name = "jobId")
     private long id;
 

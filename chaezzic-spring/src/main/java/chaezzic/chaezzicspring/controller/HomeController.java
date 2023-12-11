@@ -12,7 +12,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "home";
+        return "redirect:http://localhost:3000";
     }
 
     @GetMapping("/basic")

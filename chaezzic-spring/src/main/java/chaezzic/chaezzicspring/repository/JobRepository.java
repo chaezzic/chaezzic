@@ -7,8 +7,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface JobRepository extends JpaRepository<Job, Long>, JobRepositoryCustom {
-
-    List<Job> findAll();
-
     Job save(Job job);
 }

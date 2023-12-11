@@ -6,6 +6,6 @@ import lombok.AllArgsConstructor;
 @Data
 @AllArgsConstructor
 public class JobList {
-    public String code;
+//    public String code;
     public String displayName;
 }

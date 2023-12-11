@@ -1,6 +1,5 @@
 package chaezzic.chaezzicspring.service;
 
-import chaezzic.chaezzicspring.domain.CreateUserRequest;
 import chaezzic.chaezzicspring.domain.User;
 import chaezzic.chaezzicspring.repository.UserRepository;
 import org.springframework.transaction.annotation.Transactional;

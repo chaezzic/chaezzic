@@ -3,6 +3,7 @@ package chaezzic.chaezzicspring.config.oauth2.service;
 import chaezzic.chaezzicspring.domain.User;
 import chaezzic.chaezzicspring.repository.UserRepository;
 import chaezzic.chaezzicspring.service.UserService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -11,13 +12,16 @@ import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserServ
         import org.springframework.security.oauth2.core.user.OAuth2User;
         import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class PrincipalOAuth2UserService extends DefaultOAuth2UserService {
     @Autowired public UserService userService;
     @Autowired private UserRepository userRepository;
+    private final HttpSession httpSession;
 
     //    깃허브로 부터 받은 userRequest 데이터에 대한 후처리 되는 함수
     @Override
@@ -47,6 +51,10 @@ public class PrincipalOAuth2UserService extends DefaultOAuth2UserService {
             user.setId(userId);
             user.setName(name);
             user.setEmail(email);
+            user.setRepoUrl(repoUrl);
+
+            httpSession.setAttribute("user", user);
+            httpSession.setAttribute("accessToken", userRequest.getAccessToken().getTokenValue());
 
             userRepository.save(user);
         }

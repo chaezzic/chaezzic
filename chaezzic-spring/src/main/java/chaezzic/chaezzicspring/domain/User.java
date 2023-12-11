@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Table(name="users")
@@ -14,14 +13,10 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User implements Serializable {
+public class User{
 
     @Id
-    //taba
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-
-    //h2
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -30,5 +25,8 @@ public class User implements Serializable {
 
     @Column(name = "email", nullable = true)
     private String email;
+
+    @Column(name = "repo_url", nullable = false)
+    private String repoUrl;
 
 }

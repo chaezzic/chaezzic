@@ -5,16 +5,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity
 @Data
 @Table(name = "job_skills")
 @NoArgsConstructor
 @AllArgsConstructor
-public class JobSkills implements Serializable {
+public class JobSkills{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "jobskills_id")
     private long id;
 

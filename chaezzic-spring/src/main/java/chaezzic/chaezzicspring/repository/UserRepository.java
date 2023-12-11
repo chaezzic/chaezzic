@@ -11,6 +11,4 @@ public interface UserRepository extends JpaRepository<User, Long>, UserRepositor
     User save(User user);
 
     Optional<User> findById(Long id);
-
-    List<User> findAll();
 }
