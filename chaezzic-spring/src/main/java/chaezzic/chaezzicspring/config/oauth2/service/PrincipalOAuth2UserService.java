@@ -53,11 +53,10 @@ public class PrincipalOAuth2UserService extends DefaultOAuth2UserService {
             user.setEmail(email);
             user.setRepoUrl(repoUrl);
 
-            httpSession.setAttribute("user", user);
-            httpSession.setAttribute("accessToken", userRequest.getAccessToken().getTokenValue());
-
             userRepository.save(user);
         }
+        httpSession.setAttribute("userId", oAuth2User.getAttribute("id"));
+        httpSession.setAttribute("accessToken", userRequest.getAccessToken().getTokenValue());
 
         return oAuth2User;
     }

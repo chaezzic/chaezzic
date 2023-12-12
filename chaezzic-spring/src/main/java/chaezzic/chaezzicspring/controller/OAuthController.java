@@ -1,7 +1,10 @@
 package chaezzic.chaezzicspring.controller;
 
+import chaezzic.chaezzicspring.config.oauth2.service.PrincipalOAuth2UserService;
+import chaezzic.chaezzicspring.domain.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,11 +19,20 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/oauth")
 @RequiredArgsConstructor
 public class OAuthController {
+    private final PrincipalOAuth2UserService principalOAuth2UserService;
 
     @GetMapping("/token")
-    public String giveToken(HttpServletRequest request){
+    public ResponseEntity<?> giveToken(HttpServletRequest request){
         HttpSession httpSession = request.getSession();
         String token = (String) httpSession.getAttribute("accessToken");
-        return token;
+        System.out.println(token);
+        return ResponseEntity.ok(token);
+    }
+
+    @GetMapping("/userId")
+    public ResponseEntity<?> giveUser(HttpServletRequest request){
+        HttpSession httpSession = request.getSession();
+        Long id = (long) (int) httpSession.getAttribute("userId");
+        return ResponseEntity.ok(id);
     }
 }
