@@ -3,25 +3,23 @@ package chaezzic.chaezzicspring.controller;
 import chaezzic.chaezzicspring.domain.User;
 import chaezzic.chaezzicspring.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @Controller
+@RestController
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/users/List")
-    public String list(Model model) {
+    @GetMapping("/userList")
+    public ResponseEntity<List<User>> list() {
         List<User> users = userService.findMembers();
-        model.addAttribute("users", users);
 
-        return "users/userList";
+        return ResponseEntity.ok(users);
     }
 }
