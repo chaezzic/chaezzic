@@ -1,6 +1,5 @@
 package chaezzic.chaezzicspring.controller;
 
-import chaezzic.chaezzicspring.config.oauth2.service.PrincipalOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,7 +16,6 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/oauth")
 @RequiredArgsConstructor
 public class OAuthController {
-    private final PrincipalOAuth2UserService principalOAuth2UserService;
 
     @GetMapping("/token")
     public String giveToken(HttpServletRequest request){
