@@ -7,6 +7,7 @@ import chaezzic.chaezzicspring.repository.JobSkillsRepository;
 import chaezzic.chaezzicspring.repository.SkillRepository;
 import chaezzic.chaezzicspring.repository.UserRepository;
 import chaezzic.chaezzicspring.service.UserService;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -43,6 +44,11 @@ public class UserServiceIntegrationTest {
         User findUser = userRepository.findById(saveId).get();
         assertEquals(user.getName(), findUser.getName());
 
+    }
+
+    @AfterEach
+    public void end() throws Exception {
+        userRepository.deleteAll();
     }
 
     @Test
@@ -91,12 +97,12 @@ public class UserServiceIntegrationTest {
         JobSkills jobSkills1 = new JobSkills();
         job1.setJobTitle("Engineer");
         job1.setTitle("spring1");
-        job1.setId(12345678L);
+        job1.setJobId(12345678L);
         job1.setPart("asdf");
         job1.setYear("2023");
         skill1.setName("Java");
         skill1.setId(12L);
-        jobSkills1.setJobId(job1.getId());
+        jobSkills1.setJobId(job1.getJobId());
         jobSkills1.setSkillId(skill1.getId());
         jobSkills1.setId(1234);
         jobRepository.save(job1);
@@ -107,13 +113,13 @@ public class UserServiceIntegrationTest {
         Skill skill2 = new Skill();
         JobSkills jobSkills2 = new JobSkills();
         job2.setJobTitle("Engineer");
-        job2.setId(23456789L);
+        job2.setJobId(23456789L);
         job2.setTitle("spring2");
         job2.setPart("asdf");
         job2.setYear("2023");
         skill2.setName("Python");
         skill2.setId(23L);
-        jobSkills2.setJobId(job2.getId());
+        jobSkills2.setJobId(job2.getJobId());
         jobSkills2.setSkillId(skill2.getId());
         jobSkills2.setId(2345);
         jobRepository.save(job2);
@@ -124,13 +130,13 @@ public class UserServiceIntegrationTest {
         Skill skill3 = new Skill();
         JobSkills jobSkills3 = new JobSkills();
         job3.setJobTitle("Designer");
-        job3.setId(34567890L);
+        job3.setJobId(34567890L);
         job3.setTitle("spring");
         job3.setPart("asdf");
         job3.setYear("2023");
         skill3.setName("UI/UX");
         skill3.setId(34L);
-        jobSkills3.setJobId(job3.getId());
+        jobSkills3.setJobId(job3.getJobId());
         jobSkills3.setSkillId(skill3.getId());
         jobSkills3.setId(3456);
         jobRepository.save(job3);

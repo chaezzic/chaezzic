@@ -3,6 +3,8 @@ package chaezzic.chaezzicspring.service;
 import chaezzic.chaezzicspring.domain.Job;
 import chaezzic.chaezzicspring.domain.JobDTO;
 import chaezzic.chaezzicspring.repository.JobRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
