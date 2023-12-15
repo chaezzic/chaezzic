@@ -53,4 +53,21 @@ public class JobRepositoryCustomImpl implements JobRepositoryCustom{
                 .fetchFirst();
     }
 
+    @Override
+    public List<String> companyListByStack(String skillName) {
+        QJob job = QJob.job;
+        QJobSkills jobSkills = QJobSkills.jobSkills;
+        QSkill skill = QSkill.skill;
+
+        List<String> companyList = jpaQueryFactory.selectDistinct(job.company)
+                .from(job)
+                .join(jobSkills).on(job.id.eq(jobSkills.jobId))
+                .join(skill).on(jobSkills.skillId.eq(skill.id))
+                .where(skill.name.eq(skillName))
+                .fetch();
+
+        return companyList;
+
+
+    }
 }

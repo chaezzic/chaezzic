@@ -30,7 +30,7 @@ public class JobController {
     }
 
     @GetMapping("/showJobTrend/{year}/{part}/{job}")
-    public ResponseEntity<?> trend(@PathVariable String year, @PathVariable String part, @PathVariable String job){
+    public ResponseEntity<?> jobTrend(@PathVariable String year, @PathVariable String part, @PathVariable String job){
 
         List<JobDTO> jobDTOList = jobRepository.findTop5Skills(job, part, year);
         Long total = jobRepository.totalCount(job, part, year);
@@ -42,6 +42,13 @@ public class JobController {
         JobTrendResponse response = new JobTrendResponse(jobDTOList, total);
 
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/showCompanyList/{stack}")
+    public ResponseEntity<?> companyList(@PathVariable String stack){
+        List<String> companyList = jobRepository.companyListByStack(stack);
+
+        return ResponseEntity.ok(companyList);
     }
 }
 
